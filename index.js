@@ -8,20 +8,24 @@ app.use(cors());
 app.use(express.json());
 mongoose.connect('mongodb+srv://aditya:aditya@restro-dine-tech.js3ftyl.mongodb.net/');
 
-app.post("/booking", (req,res)=>{
-    User.create(req.body)
+app.post("/booking", async(req,res)=>{
+    
+    await User.create(req.body)
     .then(users=>res.json(users))
     .catch(err=>res.json(err))
 });
 
-app.delete('/deleteItem/:id',(req,res)=>{
+app.delete('/deleteItem/:id',async(req,res)=>{
+    
     const id = req.params.id;
-    User.findByIdAndDelete({_id:id})
+    await User.findByIdAndDelete({_id:id})
     .then(res=>res.json(res))
     .catch(err=>res.json(err))
+    
 })
-app.get("/",(req,res)=>{
-    User.find({})
+app.get("/",async(req,res)=>{
+    
+    await User.find({})
     .then(users=>res.json(users))
     .catch(err=>res.json(err));
 })
