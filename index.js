@@ -6,7 +6,7 @@ const User = require('./models/user.models.js')
 const app = express();
 app.use(cors());
 app.use(express.json());
-mongoose.connect('mongodb://127.0.0.1:27017/restro-dine');
+mongoose.connect('mongodb+srv://aditya:aditya@restro-dine-tech.js3ftyl.mongodb.net/');
 
 app.post("/booking", (req,res)=>{
     User.create(req.body)
